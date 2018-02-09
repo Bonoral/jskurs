@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+	<title>Fahrradrennen</title>
+	<meta charset="utf-8">
+	<script src="jquery-3.2.1.min.js"></script>
+	<script>
+	/*$.randy = function(i,j) {
+		return Math.floor( Math.random() * (j-i+1) ) + i;
+	}*/
+	var spieler = {
+		interval:false,
+		fahrrad:{
+			x:100,
+			w:100,
+			h:100
+
+		},
+
+		linie:{
+			x:100,
+			w:1000,
+			h:2
+		},
+		draw:function( canvas ) {
+			var ctx = canvas.getContext( '2d' );
+
+			ctx.beginPath();
+			ctx.fillRect(0,this.linie.x,this.linie.w,this.linie.h );
+			var img = new Image()
+			img.src="bicycle.svg"
+			ctx.drawImage(img,0,0);
+
+		},
+		game:function() {
+			this.draw( $('#game').get(0) );
+
+		}
+	}
+
+
+	$( document ).ready( function() {
+		 spieler.game();
+
+	});
+
+	</script>
+	<style>
+  option.red{
+ 	 background-color: red
+  }
+  option.green{
+ 	background-color: green
+  }
+  option.blue{
+ 	background-color: blue
+  }
+  option.yellow{
+ 	background-color: yellow
+  }
+#fahrrad{width:100px;height:100px;}
+	#game { border:1px solid #000; }
+	</style>
+</head>
+<body><h1>Fahrradrennen</h1>
+<button id="start">Starte Rennen</button>
+<select>
+<option>Farbe wählen..</option>
+<option class="red"></option>
+<option class="green"></option>
+<option class="blue"></option>
+<option class="yellow"></option>
+</select><br>
+	<canvas width="1000" height="1000" id="game">
+
+	</canvas>
+<canvas width="100" height="100">
+	<img src="bicycle.svg">
+</canvas>
+</body>
+</html>
